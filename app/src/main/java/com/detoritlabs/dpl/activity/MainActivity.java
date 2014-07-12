@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
                     return EventFragment.newInstance();
                 case NEWS:
                     return NewsFragment.newInstance();
-                case CONTACT:
+                case MORE:
                     return ContactFragment.newInstance();
                 case CATALOG:
                     return CatalogFragment.newInstance();
