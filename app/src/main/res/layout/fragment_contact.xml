@@ -1,154 +1,130 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TableRow
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contact Us"/>
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            style="@android:style/TextAppearance.Medium"
+            android:text="Contact Us"
+            android:textColor="#7ed321"
+            android:padding="@dimen/contact_header_padding"/>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/call"/>
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#3183cc" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/call"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
             android:text="(313) 930-3939"
             android:id="@+id/callButton"
-            android:background="@drawable/more_menu_item"
-            android:gravity="left|center_vertical"
-            android:layout_weight="1"/>
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/librarian"/>
+            android:textColor="#7ed321"
+            android:background="@drawable/contact_button"
+            android:gravity="left|center_vertical" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Talk to a librarian"
+            android:drawableLeft="@drawable/librarian"
+            android:text="Ask a librarian"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
             android:id="@+id/librarianButton"
             android:gravity="left|center_vertical"
-            android:background="@drawable/more_menu_item"
-            android:layout_weight="1"/>
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:background="@drawable/contact_button"
+            android:textColor="#7ed321" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Social"/>
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            style="@android:style/TextAppearance.Medium"
+            android:text="Social"
+            android:padding="@dimen/contact_header_padding"
+            android:textColor="#7ed321"/>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/facebook"/>
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#3183cc" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/facebook"
             android:text="Facebook"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#7ed321"
             android:id="@+id/facebookButton"
             android:gravity="left|center_vertical"
-            android:background="@drawable/more_menu_item"
-            android:layout_weight="1"/>
+            android:background="@drawable/contact_button" />
 
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/twitter"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/twitter"
             android:text="Twitter"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#7ed321"
             android:id="@+id/twitterButton"
             android:gravity="left|center_vertical"
-            android:background="@drawable/more_menu_item"
-            android:layout_weight="1"/>
+            android:background="@drawable/contact_button" />
 
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/youtube"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/youtube"
             android:text="Youtube"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#7ed321"
             android:id="@+id/youtubeButton"
             android:gravity="left|center_vertical"
-            android:background="@drawable/more_menu_item"
-            android:layout_weight="1"/>
+            android:background="@drawable/contact_button" />
 
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Info"/>
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:text="Info"
+            style="@android:style/TextAppearance.Medium"
+            android:padding="@dimen/contact_header_padding"
+            android:textColor="#7ed321"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/onlinebooks"/>
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#3183cc" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/onlinebooks"
             android:text="Online Books"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#7ed321"
             android:id="@+id/bookButton"
             android:gravity="left|center_vertical"
-            android:background="@drawable/more_menu_item"
-            android:layout_weight="1"/>
+            android:background="@drawable/contact_button" />
 
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/location"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/location"
             android:text="Library Locations"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
             android:id="@+id/locationButton"
+            android:textColor="#7ed321"
             android:gravity="left|center_vertical"
-            android:background="@drawable/more_menu_item"
-            android:layout_weight="1"/>
+            android:background="@drawable/contact_button" />
 
-    </TableRow>
-
-</TableLayout>
+    </LinearLayout>
+</ScrollView>
