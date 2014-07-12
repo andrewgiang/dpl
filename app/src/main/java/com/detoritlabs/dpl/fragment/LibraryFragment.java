@@ -20,8 +20,6 @@ import butterknife.InjectView;
 
 public class LibraryFragment extends Fragment {
 
-    @InjectView(R.id.submitEmailSubject)
-    EditText submitTitle;
 
     @InjectView(R.id.submitEmailBody)
     EditText submitBody;
@@ -31,7 +29,6 @@ public class LibraryFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_send:
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts( "mailto", "askalibrarian@detroitpubliclibrary.org", null));
-                intent.putExtra(Intent.EXTRA_SUBJECT, submitTitle.getText());
                 intent.putExtra(Intent.EXTRA_TEXT, submitBody.getText());
                 startActivity(Intent.createChooser(intent, "Ask a Librarian"));
                 return true;
