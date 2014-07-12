@@ -41,6 +41,17 @@
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button"
             android:textColor="@color/atlantis" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_location"
+            android:text="Library Locations"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/locationButton"
+            android:textColor="@color/atlantis"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/contact_button" />
 
         <TextView
             android:layout_width="match_parent"
@@ -94,7 +105,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Info"
+            android:text="Special Services"
             style="@style/Title"
             android:padding="@dimen/contact_header_padding"
             android:textColor="@color/napier_green"/>
@@ -102,10 +113,11 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/gray" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_net"
+            android:drawableLeft="@drawable/ic_ebook"
             android:text="Overdrive eBooks and Audiobooks"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
@@ -114,17 +126,59 @@
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
 
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_location"
-            android:text="Library Locations"
+            android:drawableLeft="@drawable/ic_read"
+            android:text="Detroit Reads!"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
-            android:id="@+id/locationButton"
+            android:id="@+id/detroit_reads"
             android:textColor="@color/atlantis"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_car"
+            android:text="Library on Wheels (LOW)"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/low"
+            android:textColor="@color/atlantis"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/contact_button" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_hype"
+            android:text="HYPE Teen Center"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/hype_teen_center"
+            android:textColor="@color/atlantis"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/contact_button" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_career"
+            android:text="Career and Employment Assistance"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:id="@+id/career_services"
+            android:textColor="@color/atlantis"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/contact_button" />
+
+
+
+        <!--HYPE Teen Center-->
 
     </LinearLayout>
 </ScrollView>
