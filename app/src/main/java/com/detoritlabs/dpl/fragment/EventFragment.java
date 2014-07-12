@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.detoritlabs.dpl.activity.RssDetailActivity;
 import com.detoritlabs.dpl.adapter.EventAdapter;
@@ -33,6 +34,8 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     private static final String TAG = EventFragment.class.getName();
     @InjectView(R.id.list)
     ListView mListView;
+    @InjectView(R.id.progress)
+    ProgressBar mProgressBar;
 
 
 
@@ -52,7 +55,7 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_event, container, false);
+        View root = inflater.inflate(R.layout.fragment_news_feed, container, false);
         ButterKnife.inject(this, root);
         NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/events/rss.xml", new FutureCallback<String>() {
             @Override
@@ -63,6 +66,7 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
                         @Override
                         public void run() {
                             mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
+                            mProgressBar.setVisibility(View.GONE);
                         }
                     });
                 } catch (JSONException e1) {
