@@ -6,12 +6,12 @@
         </shape>
     </item>
 
-    <item android:top="-2dp" android:right="-2dp" android:left="-2dp">
+    <item android:top="-1dp" android:right="-1dp" android:left="-1dp">
         <shape>
             <solid android:color="@android:color/transparent" />
             <stroke
-                android:width="2dp"
-                android:color="#c6ddf0" />
+                android:width="1dp"
+                android:color="@color/gray" />
         </shape>
     </item>
 </layer-list>

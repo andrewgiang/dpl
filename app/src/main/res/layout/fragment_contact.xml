@@ -8,7 +8,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@android:style/TextAppearance.Medium"
+            style="@style/Title"
             android:text="Contact Us"
             android:textColor="@color/napier_green"
             android:padding="@dimen/contact_header_padding"/>
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@android:style/TextAppearance.Medium"
+            style="@style/Title"
             android:text="Social"
             android:padding="@dimen/contact_header_padding"
             android:textColor="@color/napier_green" />
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Info"
-            style="@android:style/TextAppearance.Medium"
+            style="@style/Title"
             android:padding="@dimen/contact_header_padding"
             android:textColor="@color/napier_green"/>
         <ImageView
