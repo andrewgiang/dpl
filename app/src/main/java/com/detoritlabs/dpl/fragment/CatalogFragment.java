@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import com.detoritlabs.dpl.R;
+import com.detoritlabs.dpl.WebViewClient;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -18,7 +19,7 @@ public class CatalogFragment extends Fragment {
     @InjectView(R.id.webview)
     WebView mWebView;
 
-    public static String website_url = "http://dplopac.detroitpubliclibrary.org/uhtbin/cgisirsi/?ps=Kf2BPJE373/MAIN/42360078/38/1/X/BLASTOFF";
+    public static String CATALOG_URL = "http://dplopac.detroitpubliclibrary.org/";
 
     public static CatalogFragment newInstance() {
         CatalogFragment fragment = new CatalogFragment();
@@ -48,7 +49,9 @@ public class CatalogFragment extends Fragment {
 
     public void startWebView(){
         mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl(website_url);
+        mWebView.setWebViewClient(new WebViewClient(getActivity()));
+        mWebView.loadUrl(CATALOG_URL);
+
     }
 
 }
