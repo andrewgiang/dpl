@@ -1,6 +1,7 @@
 package com.detoritlabs.dpl;
 
 import android.content.Context;
+import android.text.Html;
 
 import com.detoritlabs.dpl.model.Channel;
 import com.google.gson.Gson;
@@ -37,5 +38,14 @@ public class NetworkUtil {
             gson = new Gson();
         }
         return gson;
+    }
+
+    public static final char NBSP = (char) 160;
+    public static final char SPACE = (char) 32;
+    public static final char IMG = (char) 65532;
+
+    public static CharSequence stripHtml(String s) {
+        return Html.fromHtml(s).toString().replace('\n', SPACE)
+                .replace(NBSP, SPACE).replace(IMG, SPACE).trim();
     }
 }

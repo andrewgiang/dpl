@@ -74,4 +74,12 @@ public class RssItem implements Parcelable{
             return new RssItem[size];
         }
     };
+
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
 }

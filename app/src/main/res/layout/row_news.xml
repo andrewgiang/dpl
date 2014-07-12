@@ -3,22 +3,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <TextView
 
         android:id="@+id/title"
-        style="@android:style/TextAppearance.Large"
+        style="@style/Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp" />
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        />
 
     <TextView
+        android:textColor="@color/gray"
         android:id="@+id/desc"
         style="@android:style/TextAppearance.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="4"
-        android:padding="16dp" />
+        android:maxLines="3"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:ellipsize="end"/>
+    <TextView
+        android:padding="4dp"
+        android:textColor="@color/gray"
+        android:id="@+id/date_published"
+        android:gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
