@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_net"
-            android:text="Online Books"
+            android:text="Overdrive eBooks and Audiobooks"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
             android:textColor="@color/atlantis"
