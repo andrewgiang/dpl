@@ -34,11 +34,13 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/gray"
         android:paddingBottom="8dp"/>
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        android:layout_alignParentRight="true"
-        android:id="@+id/add_to_calendar"
-        android:textColor="@color/atlantis" />
+
 </RelativeLayout>
+
+<!--<ImageButton-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:src="@drawable/ic_action_add"-->
+<!--android:layout_alignParentRight="true"-->
+<!--android:id="@+id/add_to_calendar"-->
+<!--android:textColor="@color/atlantis" />-->

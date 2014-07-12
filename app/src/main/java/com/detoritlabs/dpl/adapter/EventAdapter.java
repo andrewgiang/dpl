@@ -60,31 +60,31 @@ public class EventAdapter extends ArrayAdapter<RssItem> {
                 holder.title.setText(item.getTitle());
 
                 holder.time.setText(dates[1]);
-                holder.addToCalendar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //create intent
-                        Intent calIntent = new Intent(Intent.ACTION_INSERT);
-                        calIntent.setData(CalendarContract.Events.CONTENT_URI);
-
-                        //set calendar details
-                        calIntent.setType("vnd.android.cursor.item/event");
-                        calIntent.putExtra(CalendarContract.Events.TITLE, item.getTitle());
-                        String location = parseLocation(item.getDescription());
-                        calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, NetworkUtil.stripHtml(location));
-                        //calIntent.putExtra(CalendarContract.Events.DESCRIPTION, NetworkUtil.stripHtml(item.getDescription()));
-
-                        //set date and time
-                        GregorianCalendar calDate = new GregorianCalendar(2012, 7, 15);
-                        //calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-                        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-                                calDate.getTimeInMillis());
-                        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-                                calDate.getTimeInMillis());
-
-                        getContext().startActivity(calIntent);
-                    }
-                });
+//                holder.addToCalendar.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        //create intent
+//                        Intent calIntent = new Intent(Intent.ACTION_INSERT);
+//                        calIntent.setData(CalendarContract.Events.CONTENT_URI);
+//
+//                        //set calendar details
+//                        calIntent.setType("vnd.android.cursor.item/event");
+//                        calIntent.putExtra(CalendarContract.Events.TITLE, item.getTitle());
+//                        String location = parseLocation(item.getDescription());
+//                        calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, NetworkUtil.stripHtml(location));
+//                        //calIntent.putExtra(CalendarContract.Events.DESCRIPTION, NetworkUtil.stripHtml(item.getDescription()));
+//
+//                        //set date and time
+//                        GregorianCalendar calDate = new GregorianCalendar(2012, 7, 15);
+//                        //calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+//                        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+//                                calDate.getTimeInMillis());
+//                        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+//                                calDate.getTimeInMillis());
+//
+//                        getContext().startActivity(calIntent);
+//                    }
+//                });
             }
 
         return convertView;
@@ -116,9 +116,6 @@ public class EventAdapter extends ArrayAdapter<RssItem> {
 
         @InjectView(R.id.time)
         TextView time;
-
-        @InjectView(R.id.add_to_calendar)
-        ImageButton addToCalendar;
 
         ViewHolder(View v) {
             ButterKnife.inject(this, v);
