@@ -4,39 +4,27 @@ package com.detoritlabs.dpl.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.detoritlabs.dpl.EventAdapter;
+import com.detoritlabs.dpl.NetworkUtil;
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.Channel;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.koushikdutta.async.future.FutureCallback;
 
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.XML;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewsFragment#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+
 public class NewsFragment extends Fragment {
+    @InjectView(R.id.list)
+    ListView mListView;
 
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment NewsFragment.
-     */
     public static NewsFragment newInstance() {
         NewsFragment fragment = new NewsFragment();
         Bundle args = new Bundle();
@@ -49,48 +37,30 @@ public class NewsFragment extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-
-            Thread thread = new Thread(new Runnable(){
-                @Override
-                public void run() {
-                    try {
-                        JSONObject jsonObj = null;
-                        URL url = new URL("http://www.detroit.lib.mi.us/news/rss.xml");
-                        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-                        String str;
-                        String text = "";
-                        while ((str = in.readLine()) != null) {
-                            text += str + "\n";
-                        }
-                        in.close();
-                        try {
-                            jsonObj = XML.toJSONObject(text);
-
-                            String jsonString = jsonObj.getJSONObject("rss").getJSONObject("channel").toString();
-                            Gson gson = new Gson();
-                            Channel channel = gson.fromJson(jsonString, Channel.class);
-                            Log.i(NewsFragment.class.getName(), jsonString);
-                            //System.out.println(jsonObj.toString());
-
-                        } catch (JSONException e) {
-                            Log.e("JSON exception", e.getMessage());
-                            e.printStackTrace();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            thread.start();
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        View root = inflater.inflate(R.layout.fragment_event, container, false);
+        ButterKnife.inject(this, root);
+        NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/news/rss.xml", new FutureCallback<String>() {
+            @Override
+            public void onCompleted(Exception e, String s) {
+                if (e == null) {
+                    try {
+                        final Channel channel = NetworkUtil.getChannel(s);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
+
+                            }
+                        });
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+        return root;
     }
 
 
