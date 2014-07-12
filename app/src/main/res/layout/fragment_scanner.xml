@@ -2,28 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SampleMainActivity" >
+    tools:context=".SampleMainActivity">
 
 
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/scan"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/infoView"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Scan a book's barcode to get more info!"
+        android:gravity="center|fill_horizontal"
+        android:textColor="@color/atlantis"
+        android:drawableStart="@drawable/ic_action_info"
+        android:paddingLeft="5dp"
+        android:drawablePadding="10dp"/>
 
-    <Button
-        android:id="@+id/scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="scanAgain"
-        android:text="Re-Scan" />
+    <me.dm7.barcodescanner.zxing.ZXingScannerView
+        android:id="@+id/scannerView"
+        android:layout_below="@id/infoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

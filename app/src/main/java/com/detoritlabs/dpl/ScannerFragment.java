@@ -24,6 +24,8 @@ import com.google.zxing.Result;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -35,7 +37,8 @@ public class ScannerFragment extends Fragment implements
     private static final String AUTO_FOCUS_STATE = "AUTO_FOCUS_STATE";
     private static final String SELECTED_FORMATS = "SELECTED_FORMATS";
     private static final String TAG = ScannerFragment.class.getName();
-    private ZXingScannerView mScannerView;
+    @InjectView(R.id.scannerView)
+    ZXingScannerView mScannerView;
     private boolean mFlash;
     private boolean mAutoFocus;
     private ArrayList<Integer> mSelectedIndices;
@@ -43,7 +46,8 @@ public class ScannerFragment extends Fragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
-        mScannerView = new ZXingScannerView(getActivity());
+        View root = inflater.inflate(R.layout.fragment_scanner, container, false);
+        ButterKnife.inject(this, root);
         if(state != null) {
             mFlash = state.getBoolean(FLASH_STATE, false);
             mAutoFocus = state.getBoolean(AUTO_FOCUS_STATE, true);
@@ -54,7 +58,7 @@ public class ScannerFragment extends Fragment implements
             mSelectedIndices = null;
         }
         setupFormats();
-        return mScannerView;
+        return root;
     }
 
     @Override
