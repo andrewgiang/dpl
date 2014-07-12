@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.detoritlabs.dpl.activity.EventDetailActivity;
+import com.detoritlabs.dpl.activity.RssDetailActivity;
 import com.detoritlabs.dpl.adapter.EventAdapter;
-import com.detoritlabs.dpl.adapter.NewsAdapter;
 import com.detoritlabs.dpl.NetworkUtil;
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.Channel;
@@ -82,8 +80,8 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         EventAdapter adapter = (EventAdapter) mListView.getAdapter();
         RssItem item = adapter.getItem(i);
-        Intent intent = new Intent(getActivity(), EventDetailActivity.class);
-        intent.putExtra(EventDetailActivity.RSS_ITEM, item);
+        Intent intent = new Intent(getActivity(), RssDetailActivity.class);
+        intent.putExtra(RssDetailActivity.RSS_ITEM, item);
         startActivity(intent);
 
 

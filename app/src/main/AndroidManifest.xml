@@ -29,7 +29,7 @@
             android:label="@string/library_label"
             android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".activity.EventDetailActivity"
+            android:name=".activity.RssDetailActivity"
             android:parentActivityName=".activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -3,7 +3,6 @@ package com.detoritlabs.dpl.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ import com.detoritlabs.dpl.model.RssItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class EventDetailActivity extends Activity {
+public class RssDetailActivity extends Activity {
 
     public static final String RSS_ITEM = "RSS_ITEM";
     RssItem mEventItem;
@@ -27,7 +26,7 @@ public class EventDetailActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_detail);
+        setContentView(R.layout.activity_rss_detail);
         ButterKnife.inject(this);
         if(getIntent() != null){
             mEventItem = getIntent().getParcelableExtra(RSS_ITEM);
