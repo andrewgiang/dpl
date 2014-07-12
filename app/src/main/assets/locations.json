@@ -1,22 +1,374 @@
 [
-    {
-        "name": "Main",
-        "number": "(313) 481-1300",
-        "address": "5201 Woodward Ave.",
-        "hours": [
-            {
-            "open": "T, W: 12 p.m. - 8 p.m."
-            },
-            {
-            "open": "Th, F, Sa: 10 a.m. - 6 p.m"
-            },
-            {
-            "open": "Su, M: CLOSED"
-            }]
-       }
+	{
+		"name": "Main",
+		"number": "(313) 481-1300",
+		"address": "5201 Woodward Ave.",
+		"hours":[ 
+			{
+				"open": "T, W: 12 p.m. - 8 p.m."	
+			},
+			{
+				"open": "Th, F, Sa: 10 a.m. - 6 p.m."
+			},
+			{
+				"open": "Su, M: CLOSED"
+			}
+		]
+	},
 
+	{
+		"name": "Bowen",
+		"number": "(313) 481-1540",
+		"address": "3648 W. Vernor",
+		"hours":[ 
+				{
+					"open": "M, W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "T, Th: 12 p.m. - 8 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
 
+	{
+		"name": "Hubbard",
+		"number": "(313) 481-1750",
+		"address": "12929 W. McNichols",
+		"hours":[ 
+				{
+					"open": "M, W: 12 p.m. - 8 p.m. "	
+				},
+				{
+					"open": "T, Th, F: 10 a.m. - 6 p.m. "
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
 
+	{
+		"name": "Campbell",
+		"number": "(313) 481-1550",
+		"address": "8733 W. Vernor",
+		"hours":[ 
+				{
+					"open": "M, W: 12 p.m. - 8 p.m."	
+				},
+				{
+					"open": "T, Th, F: 10 a.m. - 6 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
 
+	{
+		"name": "Jefferson",
+		"number": "(313) 481-1760",
+		"address": "12350 E. Outer Dr.",
+		"hours":[ 
+				{
+					"open": "M, W: 12 p.m. - 8 p.m. "	
+				},
+				{
+					"open": "T, Th, F: 10 a.m. - 6 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
 
+	{
+		"name": "Chandler Park",
+		"number": "(313) 481-1560",
+		"address": "12800 Harper",
+		"hours":[ 
+				{
+					"open": "W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "Th: 12 p.m. - 8 p.m."
+				},
+				{
+					"open": "M, T, Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Knapp",
+		"number": "(313) 481-1770",
+		"address": "13330 Conant",
+		"hours":[ 
+				{
+					"open": "M, W: 12 p.m. - 8 p.m."	
+				},
+				{
+					"open": "T, Th, F: 10 a.m. - 6 p.m. "
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Chaney",
+		"number": "(313) 481-1570",
+		"address": "16101 Grand River",
+		"hours":[ 
+				{
+					"open": "M, W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "T, Th: 12 p.m. - 8 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Lincoln",
+		"number": "(313) 481-1780",
+		"address": "1221 E. 7 Mile Rd.",
+		"hours":[ 
+			{
+				"open": "M: 12 p.m. - 8 p.m."	
+			},
+			{
+				"open": "T: 10 a.m. - 6 p.m."
+			},
+			{
+				"open": "W, Th, F, Sa, Su: CLOSED"
+			}
+		]
+	},
+
+	{
+		"name": "Chase",
+		"number": "(313) 481-1580",
+		"address": "17731 W. 7 Mile Rd.",
+		"hours":[ 
+			{
+				"open": "M, W, F: 10 a.m. - 6 p.m."	
+			},
+			{
+				"open": "T, Th: 12 p.m. - 8 p.m. "
+			},
+			{
+				"open": "Sa, Su: CLOSED"
+			}
+		]
+	},
+
+	{
+		"name": "Monteith",
+		"number": "(313) 481-1800",
+		"address": "14100 Kercheval",
+		"hours":[ 
+				{
+					"open": "M: 12 p.m. - 8 p.m."	
+				},
+				{
+					"open": "T: 10 a.m. - 6 p.m."
+				},
+				{
+					"open": "W, Th, F, Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Conely",
+		"number": "(313) 481-1590",
+		"address": "4600 Martin",
+		"hours":[ 
+				{
+					"open": "M, W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "T, Th: 12 p.m. - 8 p.m. "
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "National Automotive History Collection",
+		"number": "(313) 481-1862",
+		"address": "121 Gratiot",
+		"hours":[ 
+					{
+						"open": "M, T, W, Th, F: 10 a.m. - 6 p.m. "	
+					},
+					{
+						"open": "Sa, Su: CLOSED"
+					}
+				]
+	},
+
+	{
+		"name": "Douglass",
+		"number": "(313) 481-1700",
+		"address": "3666 Grand River",
+		"hours":[ 
+				{
+					"open": "TEMPORARILY CLOSED"	
+				}
+			]
+	},
+
+	{
+		"name": "Parkman",
+		"number": "(313) 481-1810",
+		"address": "1766 Oakman Blvd.",
+		"hours":[ 
+				{
+					"open": "M, W: 12 p.m. - 8 p.m."	
+				},
+				{
+					"open": "T, Th, F: 10 a.m. - 6 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Duffield",
+		"number": "(313) 481-1710",
+		"address": "2507 W. Grand Blvd.",
+		"hours":[ 
+				{
+					"open": "M, W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "T, Th: 12 p.m. - 8 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Redford",
+		"number": "(313) 481-1820",
+		"address": "21200 Grand River",
+		"hours":[ 
+				{
+					"open": "TEMPORARILY CLOSED"	
+				}
+			]
+	},
+
+	{
+		"name": "Edison",
+		"number": "(313) 481-1720",
+		"address": "18400 Joy Rd.",
+		"hours":[ 
+				{
+					"open": "M, W: 12 p.m. - 8 p.m."	
+				},
+				{
+					"open": "T, Th, F: 10 a.m. - 6 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Sherwood Forest",
+		"number": "(313) 481-1840",
+		"address": "7117 W. 7 Mile Rd.",
+		"hours":[ 
+				{
+					"open": "M, W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "T, Th: 12 p.m. - 8 p.m."
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Elmwood Park ",
+		"number": "(313) 481-1732",
+		"address": "550 Chene",
+		"hours":[ 
+				{
+					"open": "M, W, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "T, Th: 12 p.m. - 8 p.m. "
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Skillman",
+		"number": "(313) 481-1850",
+		"address": "121 Gratiot",
+		"hours":[ 
+				{
+					"open": "M, T, W, Th, F: 10 a.m. - 6 p.m."	
+				},
+				{
+					"open": "Sa, Su: CLOSED"
+				}
+			]
+	},
+
+	{
+		"name": "Franklin",
+		"number": "(313) 481-1740",
+		"address": "13651 E. McNichols",
+		"hours":[ 
+					{
+						"open": "M, W, F: 10 a.m. - 6 p.m."	
+					},
+					{
+						"open": "T, Th: 12 p.m. - 8 p.m. "
+					},
+					{
+						"open": "Sa, Su: CLOSED"
+					}
+				]
+	},
+
+	{
+		"name": "Wilder",
+		"number": "(313) 481-1870",
+		"address": "7140 E. 7 Mile Rd.",
+		"hours":[ 
+					{
+						"open": "W: 12 p.m. - 8 p.m."	
+					},
+					{
+						"open": "Th, F:  10 a.m. - 6 p.m."
+					},
+					{
+						"open": "M, T, Sa, Su: CLOSED"
+					}
+				]
+	}
 ]

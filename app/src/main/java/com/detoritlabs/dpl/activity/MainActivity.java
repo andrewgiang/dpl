@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class MainFragmentPagerAdapter extends FragmentPagerAdapter{
+    public static class MainFragmentPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider{
 
         public MainFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -93,6 +93,11 @@ public class MainActivity extends Activity {
         @Override
         public CharSequence getPageTitle(int position) {
             return Section.values()[position].name();
+        }
+
+        @Override
+        public int getPageIconResId(int i) {
+            return Section.values()[i].getIcon();
         }
     }
 }

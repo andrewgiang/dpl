@@ -47,6 +47,7 @@ public class LocationAdapter extends ArrayAdapter<Location> {
         holder.phone.setText(location.getNumber());
         holder.address.setText(location.getAddress());
 
+        holder.hours.removeAllViews();
         for(Hour hour: location.getHours()){
             TextView textView = new TextView(getContext());
             textView.setText(hour.formattedText());
