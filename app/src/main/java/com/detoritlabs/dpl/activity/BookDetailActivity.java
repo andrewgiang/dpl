@@ -1,6 +1,7 @@
 package com.detoritlabs.dpl.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.api.model.Author;
 import com.detoritlabs.dpl.api.model.Book;
 import com.detoritlabs.dpl.api.model.Cover;
+import com.detoritlabs.dpl.fragment.CatalogFragment;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -21,13 +23,13 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by andrewgiang on 7/12/14.
  */
 public class BookDetailActivity extends Activity {
 
-    public static String SEARCH_URL = "http://dplopac.detroitpubliclibrary.org/uhtbin/cgisirsi/x/0/0/57/5?user_id=webserver&searchdata1=";
     @InjectView(R.id.bookName)
     TextView bookName;
 
@@ -45,9 +47,15 @@ public class BookDetailActivity extends Activity {
 
     @InjectView(R.id.publish_date)
     TextView publish_date;
+    private String isbn;
 
-    @InjectView(R.id.webview)
-    WebView webView;
+    @OnClick(R.id.catalog)
+    public void launchCatalog(){
+        Intent i = new Intent(this, CatalogActivity.class);
+        i.putExtra(CatalogActivity.KEY_URL, CatalogFragment.SEARCH_URL+isbn);
+        i.putExtra(CatalogActivity.KEY_TYPE, CatalogActivity.TYPE_SEARCH);
+        startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +80,11 @@ public class BookDetailActivity extends Activity {
                 });
             }
             String authorText = getAuthorText(book.getAuthors());
-            String isbn = getIntent().getStringExtra("ISBN");
+            isbn = getIntent().getStringExtra("ISBN");
             authors.setText(authorText);
 
             pagenumber.setText(String.valueOf(book.getNumberOfPages()));
             publish_date.setText(book.getPublishDate());
-            webView.getSettings().setJavaScriptEnabled(true);
-            webView.getSettings().setUseWideViewPort(true);
-            webView.loadUrl(SEARCH_URL + isbn);
 
         }
     }
@@ -96,4 +101,3 @@ public class BookDetailActivity extends Activity {
     }
 }
 
-//http://dplopac.detroitpubliclibrary.org/uhtbin/cgisirsi/x/0/0/57/5?user_id=webserver&searchdata1=9780385342452

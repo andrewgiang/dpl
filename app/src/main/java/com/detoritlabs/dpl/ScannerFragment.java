@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.detoritlabs.dpl.activity.BookDetailActivity;
+import com.detoritlabs.dpl.activity.CatalogActivity;
 import com.detoritlabs.dpl.api.model.BookResponse;
+import com.detoritlabs.dpl.fragment.CatalogFragment;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
@@ -89,9 +91,13 @@ public class ScannerFragment extends Fragment implements
                 isbn = rawResult.getText();
                 application.getOpenLibApi().getBook("ISBN:"+ isbn, this);
                 break;
+            default:
+                Toast.makeText(getActivity(), "Unable to scan", Toast.LENGTH_SHORT).show();
+                mScannerView.startCamera();
+                mScannerView.setFlash(mFlash);
+                mScannerView.setAutoFocus(mAutoFocus);
+                break;
         }
-        Log.v(TAG, rawResult.getText()); // Prints scan results
-        Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
     }
 
 
@@ -102,16 +108,8 @@ public class ScannerFragment extends Fragment implements
 
     public void setupFormats() {
         List<BarcodeFormat> formats = new ArrayList<BarcodeFormat>();
-        if(mSelectedIndices == null || mSelectedIndices.isEmpty()) {
-            mSelectedIndices = new ArrayList<Integer>();
-            for(int i = 0; i < ZXingScannerView.ALL_FORMATS.size(); i++) {
-                mSelectedIndices.add(i);
-            }
-        }
 
-        for(int index : mSelectedIndices) {
-            formats.add(ZXingScannerView.ALL_FORMATS.get(index));
-        }
+        formats.add(BarcodeFormat.EAN_13);
         if(mScannerView != null) {
             mScannerView.setFormats(formats);
         }
@@ -126,16 +124,24 @@ public class ScannerFragment extends Fragment implements
 
     @Override
     public void success(BookResponse bookResponse, Response response) {
-        Toast.makeText(getActivity(),"s", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(getActivity(), BookDetailActivity.class);
-        i.putExtra("BOOK", bookResponse.getBook());
-        i.putExtra("ISBN", isbn);
-        startActivity(i);
+//        Toast.makeText(getActivity(),"s", Toast.LENGTH_LONG).show();
+        if(bookResponse.getBook() == null) {
+            Toast.makeText(getActivity(), "Unable to parse book info from isbn launching catalog", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity(), CatalogActivity.class);
+            i.putExtra(CatalogActivity.KEY_URL, CatalogFragment.SEARCH_URL+isbn);
+            i.putExtra(CatalogActivity.KEY_TYPE, CatalogActivity.TYPE_SEARCH);
+            startActivity(i);
+        }else{
+            Intent i = new Intent(getActivity(), BookDetailActivity.class);
+            i.putExtra("BOOK", bookResponse.getBook());
+            i.putExtra("ISBN", isbn);
+            startActivity(i);
+        }
     }
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(),"f", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity(),"f", Toast.LENGTH_LONG).show();
 
     }
 }

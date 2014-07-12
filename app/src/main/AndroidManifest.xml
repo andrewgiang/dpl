@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -36,11 +37,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.detoritlabs.dpl.activity.MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.BookDetailActivity"
             android:label="Book Preview"
             android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.CatalogActivity"
+            android:label="@string/title_activity_catalog"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.detoritlabs.dpl.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

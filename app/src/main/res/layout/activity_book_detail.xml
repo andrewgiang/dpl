@@ -142,10 +142,17 @@
 
         </TableLayout>
 
-        <WebView
-            android:id="@+id/webview"
+        <Button
+            android:textAlignment="viewStart"
+            android:paddingLeft="5dp"
+            android:drawablePadding="5dp"
+            android:text="View In Catalog"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_selector"
+            android:id="@+id/catalog"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></WebView>
+            android:layout_height="48dp" />
+
     </LinearLayout>
 </ScrollView>
 

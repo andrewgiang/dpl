@@ -117,6 +117,17 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_book"
+            android:text="Browse Books"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="@color/atlantis"
+            android:id="@+id/browse_catalog"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/contact_button" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_ebook"
             android:text="Overdrive eBooks and Audiobooks"
             android:paddingLeft="10dp"

@@ -19,7 +19,7 @@ public class WebViewClient extends android.webkit.WebViewClient{
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if(url.contains(CatalogFragment.CATALOG_URL)){
+        if(url.contains(CatalogFragment.HOME_URL)){
             return false;
         }
         // Otherwise, the link is not for a page on my site, so launch another Activity that handles URLs

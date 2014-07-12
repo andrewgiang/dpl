@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.detoritlabs.dpl.R;
+import com.detoritlabs.dpl.activity.CatalogActivity;
 import com.detoritlabs.dpl.activity.LibraryActivity;
 import com.detoritlabs.dpl.activity.LocationActivity;
 
@@ -155,5 +156,13 @@ public class ContactFragment extends Fragment {
     @OnClick(R.id.career_services)
     public void onCareerServicesButtonClick(){
         openLink(CAREER_ASSISTANCE);
+    }
+
+    @OnClick(R.id.browse_catalog)
+    public void onCatalogButtonClick(){
+        Intent i = new Intent(getActivity(), CatalogActivity.class);
+        i.putExtra(CatalogActivity.KEY_TYPE, CatalogActivity.TYPE_HOME);
+        i.putExtra(CatalogActivity.KEY_URL, CatalogFragment.HOME_URL);
+        startActivity(i);
     }
 }

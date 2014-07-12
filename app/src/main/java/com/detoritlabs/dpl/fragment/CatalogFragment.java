@@ -10,6 +10,7 @@ import android.webkit.WebView;
 
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.WebViewClient;
+import com.detoritlabs.dpl.activity.CatalogActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -19,12 +20,20 @@ public class CatalogFragment extends Fragment {
     @InjectView(R.id.webview)
     WebView mWebView;
 
-    public static String CATALOG_URL = "http://dplopac.detroitpubliclibrary.org/";
+    public static String HOME_URL = "http://dplopac.detroitpubliclibrary.org/";
 
-    public static CatalogFragment newInstance() {
+    public static String SEARCH_URL = "http://dplopac.detroitpubliclibrary.org/uhtbin/cgisirsi/x/0/0/57/5?user_id=webserver&searchdata1=";
+
+    private int type;
+    private String url;
+
+    public static CatalogFragment newInstance(int type, String url) {
         CatalogFragment fragment = new CatalogFragment();
         Bundle args = new Bundle();
+        args.putInt(CatalogActivity.KEY_TYPE, type);
+        args.putString(CatalogActivity.KEY_URL, url);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -35,6 +44,10 @@ public class CatalogFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getArguments() != null){
+            type = getArguments().getInt(CatalogActivity.KEY_TYPE);
+            url = getArguments().getString(CatalogActivity.KEY_URL);
+        }
     }
 
     @Override
@@ -42,15 +55,19 @@ public class CatalogFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dplcheckout, container, false);
         ButterKnife.inject(this, root);
-        startWebView();
+        if(type == CatalogActivity.TYPE_SEARCH){
+            startWebView(url);
+        }else{
+            startWebView(HOME_URL);
+        }
         return root;
     }
 
 
-    public void startWebView(){
+    public void startWebView(String url){
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient(getActivity()));
-        mWebView.loadUrl(CATALOG_URL);
+        mWebView.loadUrl(url);
 
     }
 

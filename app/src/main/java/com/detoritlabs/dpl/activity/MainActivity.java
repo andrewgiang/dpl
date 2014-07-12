@@ -94,7 +94,7 @@ public class MainActivity extends Activity implements ViewPager.OnPageChangeList
                     return NewsFragment.newInstance();
                 case More:
                     return ContactFragment.newInstance();
-                case Catalog:
+                case Scanner:
                     return new ScannerFragment();
 
                 default: return NewsFragment.newInstance();
