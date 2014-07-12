@@ -47,6 +47,7 @@ public class DPLCheckoutFragment extends Fragment {
 
 
     public void startWebView(){
+        mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl(website_url);
     }
 
