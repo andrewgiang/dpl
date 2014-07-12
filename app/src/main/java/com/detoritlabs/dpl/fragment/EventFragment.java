@@ -105,6 +105,7 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
                 });
 
         mListView.setOnItemClickListener(this);
+        mListView.setItemsCanFocus(true);
         return root;
     }
 
