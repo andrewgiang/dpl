@@ -10,13 +10,13 @@
             android:layout_height="wrap_content"
             style="@android:style/TextAppearance.Medium"
             android:text="Contact Us"
-            android:textColor="#7ed321"
+            android:textColor="@color/napier_green"
             android:padding="@dimen/contact_header_padding"/>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#3183cc" />
+            android:layout_height="2dp"
+            android:background="@color/gray" />
 
         <Button
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:drawablePadding="10dp"
             android:text="(313) 930-3939"
             android:id="@+id/callButton"
-            android:textColor="#7ed321"
+            android:textColor="@color/atlantis"
             android:background="@drawable/contact_button"
             android:gravity="left|center_vertical" />
 
@@ -40,7 +40,7 @@
             android:id="@+id/librarianButton"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button"
-            android:textColor="#7ed321" />
+            android:textColor="@color/atlantis" />
 
         <TextView
             android:layout_width="match_parent"
@@ -48,12 +48,12 @@
             style="@android:style/TextAppearance.Medium"
             android:text="Social"
             android:padding="@dimen/contact_header_padding"
-            android:textColor="#7ed321" />
+            android:textColor="@color/napier_green" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#3183cc" />
+            android:layout_height="2dp"
+            android:background="@color/gray" />
 
         <Button
             android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             android:text="Facebook"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
-            android:textColor="#7ed321"
+            android:textColor="@color/atlantis"
             android:id="@+id/facebookButton"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
@@ -74,7 +74,7 @@
             android:text="Twitter"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
-            android:textColor="#7ed321"
+            android:textColor="@color/atlantis"
             android:id="@+id/twitterButton"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
@@ -86,7 +86,7 @@
             android:text="Youtube"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
-            android:textColor="#7ed321"
+            android:textColor="@color/atlantis"
             android:id="@+id/youtubeButton"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
@@ -97,11 +97,11 @@
             android:text="Info"
             style="@android:style/TextAppearance.Medium"
             android:padding="@dimen/contact_header_padding"
-            android:textColor="#7ed321"/>
+            android:textColor="@color/napier_green"/>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#3183cc" />
+            android:layout_height="2dp"
+            android:background="@color/gray" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
             android:text="Online Books"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
-            android:textColor="#7ed321"
+            android:textColor="@color/atlantis"
             android:id="@+id/bookButton"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
@@ -122,7 +122,7 @@
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
             android:id="@+id/locationButton"
-            android:textColor="#7ed321"
+            android:textColor="@color/atlantis"
             android:gravity="left|center_vertical"
             android:background="@drawable/contact_button" />
 

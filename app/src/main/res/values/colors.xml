@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="atlantis">#8CC63F</color>
+
+    <color name="gray">#ff8d8d8d</color>
+    <color name="napier_green">#2C8E08</color>
 </resources>
