@@ -14,20 +14,20 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class DPLCheckoutFragment extends Fragment {
+public class CatalogFragment extends Fragment {
     @InjectView(R.id.webview)
     WebView mWebView;
 
     public static String website_url = "http://dplopac.detroitpubliclibrary.org/uhtbin/cgisirsi/?ps=Kf2BPJE373/MAIN/42360078/38/1/X/BLASTOFF";
 
-    public static DPLCheckoutFragment newInstance() {
-        DPLCheckoutFragment fragment = new DPLCheckoutFragment();
+    public static CatalogFragment newInstance() {
+        CatalogFragment fragment = new CatalogFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public DPLCheckoutFragment() {
+    public CatalogFragment() {
         // Required empty public constructor
     }
 

@@ -3,10 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="48dip" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabs" />
 </RelativeLayout>

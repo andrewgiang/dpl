@@ -1,24 +1,40 @@
 package com.detoritlabs.dpl;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
+
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.detoritlabs.dpl.fragment.DPLCheckoutFragment;
 
+import com.astuetz.PagerSlidingTabStrip;
+import com.detoritlabs.dpl.fragment.CatalogFragment;
+import com.detoritlabs.dpl.fragment.ContactFragment;
+import com.detoritlabs.dpl.fragment.EventFragment;
+import com.detoritlabs.dpl.fragment.NewsFragment;
+
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
 public class MainActivity extends Activity {
 
+    @InjectView(R.id.pager)
+    ViewPager mViewPager;
+
+    @InjectView(R.id.tabs)
+    PagerSlidingTabStrip tabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getFragmentManager().beginTransaction().
-                replace(R.id.fragment_container, DPLCheckoutFragment.newInstance()).
-                commit();
+        ButterKnife.inject(this);
+        mViewPager.setAdapter(new MainFragmentPagerAdapter(getFragmentManager()));
+        tabs.setViewPager(mViewPager);
 
     }
 
@@ -40,5 +56,38 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static class MainFragmentPagerAdapter extends FragmentPagerAdapter{
+
+        public MainFragmentPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (Section.values()[position]) {
+                case EVENTS:
+                    return EventFragment.newInstance();
+                case NEWS:
+                    return NewsFragment.newInstance();
+                case CONTACT:
+                    return ContactFragment.newInstance();
+                case CATALOG:
+                    return CatalogFragment.newInstance();
+
+                default: return NewsFragment.newInstance();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return Section.values().length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return Section.values()[position].name();
+        }
     }
 }
