@@ -118,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_book"
-            android:text="Browse Books"
+            android:text="Browse Catalog"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
             android:textColor="@color/atlantis"
