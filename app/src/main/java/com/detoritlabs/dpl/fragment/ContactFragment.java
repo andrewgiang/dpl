@@ -24,12 +24,16 @@ import java.util.List;
 
 public class ContactFragment extends Fragment {
 
-    static final String FACEBOOK_APP_URI = "fb://page/103971016308779";
+    static final String FACEBOOK_APP_URI = "fb://page/131893327548";
     static final String FACEBOOK_WEB_URI = "https://www.facebook.com/detroitpubliclibrary";
     static final String TWITTER_WEB_URI = "https://twitter.com/detroitlibrary";
     static final String YOUTUBE_WEB_URI = "https://www.youtube.com/user/detroitpubliclibrary";
     static final String ONLINE_BOOK_URI = "http://www.detroit.lib.mi.us/specialservice/overdrive-ebooks-and-audiobooks";
-    static final String PHONE_NUMBER = "(313) 930-3939";
+    static final String PHONE_NUMBER = "(313) 390-3939";
+    static final String DETROIT_READS = "http://www.detroit.lib.mi.us/specialservice/detroit-reads";
+    static final String LIBRARY_ON_WHEELS = "http://www.detroit.lib.mi.us/specialservice/library-wheels-low";
+    static final String HYPE_TEEN_CENTER = "http://www.detroit.lib.mi.us/specialservice/hype-teen-center";
+    static final String CAREER_ASSISTANCE = "http://www.detroit.lib.mi.us/specialservice/career-and-employment-assistance";
 
     public static ContactFragment newInstance() {
         ContactFragment fragment = new ContactFragment();
@@ -133,4 +137,23 @@ public class ContactFragment extends Fragment {
         startActivity(intent);
     }
 
+    @OnClick(R.id.detroit_reads)
+    public void onDetroitReadsButtonClick(){
+         openLink(DETROIT_READS);
+    }
+
+    @OnClick(R.id.low)
+    public void onLowButtonClick(){
+        openLink(LIBRARY_ON_WHEELS);
+    }
+
+    @OnClick(R.id.hype_teen_center)
+    public void onHypeButtonClick(){
+        openLink(HYPE_TEEN_CENTER);
+    }
+
+    @OnClick(R.id.career_services)
+    public void onCareerServicesButtonClick(){
+        openLink(CAREER_ASSISTANCE);
+    }
 }

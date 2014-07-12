@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.detoritlabs.dpl.activity.RssDetailActivity;
 import com.detoritlabs.dpl.adapter.EventAdapter;
@@ -36,6 +37,8 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     ListView mListView;
     @InjectView(R.id.progress)
     ProgressBar mProgressBar;
+    @InjectView(R.id.internet_connection_error)
+    RelativeLayout errorView;
 
 
 
@@ -57,23 +60,29 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_news_feed, container, false);
         ButterKnife.inject(this, root);
-        NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/events/rss.xml", new FutureCallback<String>() {
-            @Override
-            public void onCompleted(Exception e, String s) {
-                try {
-                    final Channel channel = NetworkUtil.getChannel(s);
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
-                            mProgressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (JSONException e1) {
-                    Log.e(TAG, e.toString());
+        if(!NetworkUtil.isNetworkAvailable(getActivity())){
+            mProgressBar.setVisibility(View.GONE);
+            errorView.setVisibility(View.VISIBLE);
+        }else {
+            errorView.setVisibility(View.GONE);
+            NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/events/rss.xml", new FutureCallback<String>() {
+                @Override
+                public void onCompleted(Exception e, String s) {
+                    try {
+                        final Channel channel = NetworkUtil.getChannel(s);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
+                                mProgressBar.setVisibility(View.GONE);
+                            }
+                        });
+                    } catch (JSONException e1) {
+                        Log.e(TAG, e.toString());
+                    }
                 }
-            }
-        });
+            });
+        }
 
         mListView.setOnItemClickListener(this);
         return root;
