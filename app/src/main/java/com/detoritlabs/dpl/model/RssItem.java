@@ -34,7 +34,7 @@ public class RssItem implements Parcelable{
     }
 
     public String getTitle() {
-        return title;
+        return title.replace("&#039;", "\'");
     }
 
     public void setTitle(String title) {
@@ -50,7 +50,7 @@ public class RssItem implements Parcelable{
     }
 
     public String getDescription() {
-        return description;
+        return description.replace("’", "\'");
     }
 
     public void setDescription(String description) {

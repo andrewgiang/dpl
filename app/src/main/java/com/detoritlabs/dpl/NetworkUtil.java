@@ -50,6 +50,7 @@ public class NetworkUtil {
     public static final char SPACE = (char) 32;
     public static final char IMG = (char) 65532;
 
+
     public static CharSequence stripHtml(String s) {
         return Html.fromHtml(s).toString().replace('\n', SPACE)
                 .replace(NBSP, SPACE).replace(IMG, SPACE).trim();
@@ -82,6 +83,17 @@ public class NetworkUtil {
         return "";
     }
 
+    public static String fixBranch(String s){
+        Document doc = Jsoup.parse(s);
+        Elements elements = doc.select("*");
+        for (Element element : elements) {
+            if(element.attr("class").equals("title node-title")){
+                element.attr("style", "display: inline-block; font-size: 1em;");
+            }
+        }
+        return doc.toString();
+
+    }
     public static String removeReadMore(String s) {
         return s.replace("read more", "");
     }

@@ -52,7 +52,15 @@ public class RssDetailActivity extends Activity {
             mEventItem = getIntent().getParcelableExtra(RSS_ITEM);
             mTitle.setText(mEventItem.getTitle());
             mDescription.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-            String html = "<style type=\"text/css\">body{color: #8d8d8d;}</style><body>" +
+            String html = "<style type=\"text/css\">" +
+                    "body{color: #8d8d8d;}" +
+                    ".node{display: inline-block;}" +
+                    ".node-inner{display: inline-block;}" +
+                    "h2{display: inline-block; margin: 0; padding: 0;}" +
+                    "a{color: #2C8E08}" +
+                    ".field-field-map{display: none;}" +
+                    "fieldset{border-top: 1px solid #8d8d8d; border-bottom: 1px solid #8d8d8d; border-left: 0; border-right: 0; background-color: #e8e8e8 }" +
+                    "</style><body>" +
                     NetworkUtil.resizeImage(mEventItem.getDescription()) +
                     "</body>";
             if(NetworkUtil.hasReadMore(html)){
@@ -61,6 +69,7 @@ public class RssDetailActivity extends Activity {
             }else{
                 showReadMore = false;
             }
+            html = NetworkUtil.fixBranch(html);
             mDescription.loadData( html, "text/html", "utf-8");
             mDescription.setBackgroundColor(0x00000000);
             mDescription.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
