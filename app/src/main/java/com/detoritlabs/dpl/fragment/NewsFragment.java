@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.detoritlabs.dpl.R;
+import com.detoritlabs.dpl.model.Channel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,6 +67,10 @@ public class NewsFragment extends Fragment {
                         try {
                             jsonObj = XML.toJSONObject(text);
 
+                            String jsonString = jsonObj.getJSONObject("rss").getJSONObject("channel").toString();
+                            Gson gson = new Gson();
+                            Channel channel = gson.fromJson(jsonString, Channel.class);
+                            Log.i(NewsFragment.class.getName(), jsonString);
                             //System.out.println(jsonObj.toString());
 
                         } catch (JSONException e) {

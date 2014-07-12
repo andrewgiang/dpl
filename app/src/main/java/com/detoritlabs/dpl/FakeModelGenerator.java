@@ -1,6 +1,6 @@
 package com.detoritlabs.dpl;
 
-import com.detoritlabs.dpl.model.Event;
+import com.detoritlabs.dpl.model.RssItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class FakeModelGenerator {
 
-    public static List<Event> getEvents(){
-        List<Event> events = new ArrayList<Event>();
+    public static List<RssItem> getEvents(){
+        List<RssItem> events = new ArrayList<RssItem>();
 
         for(int i =0; i< 50; i++){
-            Event event = new Event("Title"+i, "http://www.link.com", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+            RssItem event = new RssItem("Title"+i, "http://www.link.com", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
             events.add(event);
         }
         return events;

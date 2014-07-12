@@ -1,15 +1,14 @@
 package com.detoritlabs.dpl;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.detoritlabs.dpl.model.Event;
-
-import org.w3c.dom.Text;
+import com.detoritlabs.dpl.model.RssItem;
 
 import java.util.List;
 
@@ -19,17 +18,17 @@ import butterknife.InjectView;
 /**
  * Created by andrewgiang on 7/11/14.
  */
-public class EventAdapter extends ArrayAdapter<Event> {
+public class EventAdapter extends ArrayAdapter<RssItem> {
     private final LayoutInflater mLayoutInflater;
 
-    public EventAdapter(Context context, List<Event> objects) {
+    public EventAdapter(Context context, List<RssItem> objects) {
         super(context, R.layout.row_event, objects);
         mLayoutInflater = LayoutInflater.from(getContext());
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Event item = getItem(position);
+        RssItem item = getItem(position);
 
         ViewHolder holder;
         if(convertView == null){
@@ -40,7 +39,7 @@ public class EventAdapter extends ArrayAdapter<Event> {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.title.setText(item.getTitle());
-        holder.desc.setText(item.getDescription());
+        holder.desc.setText(Html.fromHtml(item.getDescription()));
         return convertView;
     }
 

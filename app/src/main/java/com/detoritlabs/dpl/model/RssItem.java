@@ -5,14 +5,14 @@ import java.util.Date;
 /**
  * Created by andrewgiang on 7/11/14.
  */
-public class Event {
+public class RssItem {
 
     String title;
     String link;
     String description;
-    Date date;
+    String pubDate;
 
-    public Event(String title, String link, String description) {
+    public RssItem(String title, String link, String description) {
         this.title = title;
         this.link = link;
         this.description = description;
