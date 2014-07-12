@@ -33,4 +33,9 @@ dependencies {
     compile 'com.koushikdutta.ion:ion:1.+'
     compile 'org.jsoup:jsoup:1.7.3'
     compile 'net.danlew:android.joda:2.3.4'
+    compile 'me.dm7.barcodescanner:zxing:1.1'
+    compile 'com.squareup.retrofit:retrofit:1.6.1'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+    compile 'com.squareup.picasso:picasso:2.3+'
 }
