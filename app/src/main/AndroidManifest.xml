@@ -36,6 +36,7 @@
         <activity
             android:name=".activity.RssDetailActivity"
             android:logo="@drawable/ic_launcher"
+            android:label="Details"
             android:parentActivityName=".activity.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
