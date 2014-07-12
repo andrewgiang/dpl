@@ -51,6 +51,7 @@ public class LocationAdapter extends ArrayAdapter<Location> {
         for(Hour hour: location.getHours()){
             TextView textView = new TextView(getContext());
             textView.setText(hour.formattedText());
+            textView.setTextColor(getContext().getResources().getColor(R.color.gray));
             holder.hours.addView(textView);
 
         }
