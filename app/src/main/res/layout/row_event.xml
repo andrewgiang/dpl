@@ -13,10 +13,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:paddingBottom="16dp"
+        android:paddingBottom="8dp"
         android:paddingLeft="8dp"
-        android:paddingTop="16dp"
+        android:paddingTop="8dp"
         android:text="Introduction to Word"
+        android:textColor="@color/gray"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         style="@style/Title" />
 
     <TextView
@@ -24,11 +26,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="8dp"
         android:layout_below="@+id/title"
         android:paddingRight="8dp"
         android:text="Time: 12pm - 12am"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/gray"
-        android:paddingBottom="16dp"/>
+        android:paddingBottom="8dp"/>
+
 </RelativeLayout>
+
+<!--<ImageButton-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:src="@drawable/ic_action_add"-->
+<!--android:layout_alignParentRight="true"-->
+<!--android:id="@+id/add_to_calendar"-->
+<!--android:textColor="@color/atlantis" />-->

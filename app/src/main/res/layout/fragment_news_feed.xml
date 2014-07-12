@@ -13,6 +13,7 @@
         android:paddingRight="8dp"
         android:paddingTop="4dp"
         android:clipToPadding="false"
+        android:focusable="false"
         android:scrollbarStyle="outsideOverlay"/>
     <ProgressBar
         android:id="@+id/progress"
