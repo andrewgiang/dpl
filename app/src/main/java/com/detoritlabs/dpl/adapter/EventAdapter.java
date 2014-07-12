@@ -37,17 +37,24 @@ public class EventAdapter extends ArrayAdapter<RssItem> {
         RssItem item = getItem(position);
 
         ViewHolder holder;
-        if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.row_event, parent, false);
-            holder = new ViewHolder(convertView);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        holder.title.setText(item.getTitle());
-        String[] dates = parseDate(item.getDescription());
-        holder.date.setText(dates[0]);
-        holder.time.setText(dates[1]);
+        ViewHolder2 holder2;
+            if( item.getIsOnlyDate() ){
+                convertView = mLayoutInflater.inflate(R.layout.row_event_header, parent, false);
+                holder2 = new ViewHolder2(convertView);
+                convertView.setTag(holder2);
+                String[] dates = parseDate(item.getDescription());
+                holder2.title.setText(dates[0]);
+                convertView.setEnabled(false);
+                convertView.setOnClickListener(null);
+            }else{
+                convertView = mLayoutInflater.inflate(R.layout.row_event, parent, false);
+                holder = new ViewHolder(convertView);
+                convertView.setTag(holder);
+                String[] dates = parseDate(item.getDescription());
+                holder.title.setText(item.getTitle());
+
+                holder.time.setText(dates[1]);
+            }
 
         return convertView;
     }
@@ -67,13 +74,19 @@ public class EventAdapter extends ArrayAdapter<RssItem> {
         @InjectView(R.id.title)
         TextView title;
 
-        @InjectView(R.id.date)
-        TextView date;
-
         @InjectView(R.id.time)
         TextView time;
 
         ViewHolder(View v) {
+            ButterKnife.inject(this, v);
+        }
+    }
+    public static class ViewHolder2 {
+
+        @InjectView(R.id.title)
+        TextView title;
+
+        ViewHolder2(View v) {
             ButterKnife.inject(this, v);
         }
     }

@@ -1,15 +1,22 @@
 package com.detoritlabs.dpl.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.detoritlabs.dpl.NetworkUtil;
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.RssItem;
 import com.laurencedawson.activetextview.ActiveTextView;
@@ -25,7 +32,16 @@ public class RssDetailActivity extends Activity {
     @InjectView(R.id.title)
     TextView mTitle;
     @InjectView(R.id.desc)
-    ActiveTextView mDescription;
+    WebView mDescription;
+
+    Boolean showReadMore = true;
+
+    private String readMoreLink;
+
+
+    private void openLink(String link) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +51,19 @@ public class RssDetailActivity extends Activity {
         if(getIntent() != null){
             mEventItem = getIntent().getParcelableExtra(RSS_ITEM);
             mTitle.setText(mEventItem.getTitle());
-            mDescription.setText(Html.fromHtml(mEventItem.getDescription(), new Html.ImageGetter() {
-                @Override
-                public Drawable getDrawable(String s) {
-                    return getResources().getDrawable(android.R.drawable.screen_background_dark_transparent);
-                }
-            }, null));
+            mDescription.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+            String html = "<style type=\"text/css\">body{color: #8d8d8d;}</style><body>" +
+                    NetworkUtil.resizeImage(mEventItem.getDescription()) +
+                    "</body>";
+            if(NetworkUtil.hasReadMore(html)){
+                readMoreLink = NetworkUtil.getReadMoreLink(html);
+                html = NetworkUtil.removeReadMore(html);
+            }else{
+                showReadMore = false;
+            }
+            mDescription.loadData( html, "text/html", "utf-8");
+            mDescription.setBackgroundColor(0x00000000);
+            mDescription.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
         }
     }
 
@@ -48,7 +71,9 @@ public class RssDetailActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.event_detail, menu);
+        getMenuInflater().inflate(R.menu.rss_detail_activity_actions, menu);
+        MenuItem item = menu.findItem(R.id.action_open);
+        item.setVisible(showReadMore);
         return true;
     }
 
@@ -58,7 +83,8 @@ public class RssDetailActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_open) {
+            openLink(readMoreLink);
             return true;
         }
         return super.onOptionsItemSelected(item);
