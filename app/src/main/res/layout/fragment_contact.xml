@@ -21,7 +21,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/call"
+            android:drawableLeft="@drawable/ic_phone"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
             android:text="(313) 930-3939"
@@ -33,7 +33,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/librarian"
+            android:drawableLeft="@drawable/ic_librarian"
             android:text="Ask a librarian"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
@@ -48,7 +48,7 @@
             style="@android:style/TextAppearance.Medium"
             android:text="Social"
             android:padding="@dimen/contact_header_padding"
-            android:textColor="#7ed321"/>
+            android:textColor="#7ed321" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/facebook"
+            android:drawableLeft="@drawable/ic_facebook"
             android:text="Facebook"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
@@ -70,7 +70,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/twitter"
+            android:drawableLeft="@drawable/ic_twitter"
             android:text="Twitter"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
@@ -82,7 +82,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/youtube"
+            android:drawableLeft="@drawable/ic_youtube"
             android:text="Youtube"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
@@ -105,7 +105,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/onlinebooks"
+            android:drawableLeft="@drawable/ic_net"
             android:text="Online Books"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
@@ -117,7 +117,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/location"
+            android:drawableLeft="@drawable/ic_location"
             android:text="Library Locations"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
