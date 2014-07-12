@@ -1,6 +1,8 @@
 package com.detoritlabs.dpl;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.text.Html;
 
 import com.detoritlabs.dpl.model.Channel;
@@ -47,5 +49,12 @@ public class NetworkUtil {
     public static CharSequence stripHtml(String s) {
         return Html.fromHtml(s).toString().replace('\n', SPACE)
                 .replace(NBSP, SPACE).replace(IMG, SPACE).trim();
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

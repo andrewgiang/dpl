@@ -14,5 +14,10 @@
         android:paddingTop="4dp"
         android:clipToPadding="false"
         android:scrollbarStyle="outsideOverlay"/>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
