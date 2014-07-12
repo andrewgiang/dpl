@@ -3,5 +3,6 @@
     tools:context=".LibraryActivity">
     <item android:id="@+id/action_send"
         android:title="SEND"
+        android:icon="@drawable/ic_action_send"
         android:showAsAction="always" />
 </menu>

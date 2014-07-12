@@ -3,11 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/submitEmailSubject"
-        android:hint="Subject" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,5 +11,5 @@
         android:gravity="top"
         android:inputType="textMultiLine"
         android:layout_weight="1"
-        android:hint="Message" />
+        android:hint="Question for a librarian" />
 </LinearLayout>
