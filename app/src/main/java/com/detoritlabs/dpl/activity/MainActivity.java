@@ -1,8 +1,9 @@
-package com.detoritlabs.dpl;
+package com.detoritlabs.dpl.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v13.app.FragmentPagerAdapter;
@@ -12,6 +13,8 @@ import android.view.MenuItem;
 
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.detoritlabs.dpl.R;
+import com.detoritlabs.dpl.Section;
 import com.detoritlabs.dpl.fragment.CatalogFragment;
 import com.detoritlabs.dpl.fragment.ContactFragment;
 import com.detoritlabs.dpl.fragment.EventFragment;
@@ -35,6 +38,8 @@ public class MainActivity extends Activity {
         ButterKnife.inject(this);
         mViewPager.setAdapter(new MainFragmentPagerAdapter(getFragmentManager()));
         tabs.setViewPager(mViewPager);
+
+
 
     }
 
