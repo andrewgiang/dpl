@@ -4,10 +4,10 @@ package com.detoritlabs.dpl;
  * Created by andrewgiang on 7/11/14.
  */
 public enum Section {
-    NEWS(R.drawable.ic_news),
-    EVENTS(R.drawable.ic_event),
-    CATALOG(R.drawable.ic_catalog),
-    MORE(R.drawable.ic_more);
+    News(R.drawable.ic_news),
+    Events(R.drawable.ic_event),
+    Catalog(R.drawable.ic_catalog),
+    More(R.drawable.ic_more);
 
     private final int icon;
 

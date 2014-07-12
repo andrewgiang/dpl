@@ -3,7 +3,6 @@ package com.detoritlabs.dpl.activity;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v13.app.FragmentPagerAdapter;
@@ -24,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ViewPager.OnPageChangeListener {
 
     @InjectView(R.id.pager)
     ViewPager mViewPager;
@@ -38,6 +37,7 @@ public class MainActivity extends Activity {
         ButterKnife.inject(this);
         mViewPager.setAdapter(new MainFragmentPagerAdapter(getFragmentManager()));
         tabs.setViewPager(mViewPager);
+        tabs.setOnPageChangeListener(this);
 
 
 
@@ -63,6 +63,21 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPageScrolled(int i, float v, int i2) {
+        setTitle(Section.values()[i].getTitle());
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+
+    }
+
     public static class MainFragmentPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider{
 
         public MainFragmentPagerAdapter(FragmentManager fm) {
@@ -72,13 +87,13 @@ public class MainActivity extends Activity {
         @Override
         public Fragment getItem(int position) {
             switch (Section.values()[position]) {
-                case EVENTS:
+                case Events:
                     return EventFragment.newInstance();
-                case NEWS:
+                case News:
                     return NewsFragment.newInstance();
-                case MORE:
+                case More:
                     return ContactFragment.newInstance();
-                case CATALOG:
+                case Catalog:
                     return CatalogFragment.newInstance();
 
                 default: return NewsFragment.newInstance();
