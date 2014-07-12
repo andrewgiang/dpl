@@ -8,7 +8,7 @@
         android:id="@+id/input_search"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:drawableLeft="@android:drawable/ic_menu_search"/>
+        android:drawableLeft="@drawable/ic_action_search"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
