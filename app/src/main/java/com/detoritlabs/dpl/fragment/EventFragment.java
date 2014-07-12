@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.detoritlabs.dpl.activity.RssDetailActivity;
 import com.detoritlabs.dpl.adapter.EventAdapter;
@@ -40,6 +41,8 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
     ListView mListView;
     @InjectView(R.id.progress)
     ProgressBar mProgressBar;
+    @InjectView(R.id.internet_connection_error)
+    RelativeLayout errorView;
 
 
 
@@ -62,40 +65,40 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
         View root = inflater.inflate(R.layout.fragment_news_feed, container, false);
         ButterKnife.inject(this, root);
         NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/events/rss.xml", new FutureCallback<String>() {
-            @Override
-            public void onCompleted(Exception e, String s) {
-                try {
-                    Channel channel1 = NetworkUtil.getChannel(s);
-                    String oldDate = "";
-                    for( int x = 0; x < channel1.getItem().size(); x += 2 ){
-                        String newDate;
-                        Document parse = Jsoup.parse(channel1.getItem().get(x).getDescription());
-                        Elements elementsByClass = parse.getElementsByClass("date-display-single");
-                        Element dateElement = elementsByClass.get(0);
-                        String dateText = dateElement.text();
-                        String[] split = dateText.split("-", 2);
-                        newDate = split[0];
-                        if(!newDate.equals(oldDate)) {
-                            RssItem item = new RssItem(channel1.getItem().get(x).getTitle(), channel1.getItem().get(x).getLink(), channel1.getItem().get(x).getDescription());
-                            item.setIsOnlyDate(true);
-                            item.setPubDate(channel1.getItem().get(x).getPubDate());
-                            oldDate = newDate;
-                            channel1.getItem().add(x, item);
+                    @Override
+                    public void onCompleted(Exception e, String s) {
+                        try {
+                            Channel channel1 = NetworkUtil.getChannel(s);
+                            String oldDate = "";
+                            for (int x = 0; x < channel1.getItem().size(); x += 2) {
+                                String newDate;
+                                Document parse = Jsoup.parse(channel1.getItem().get(x).getDescription());
+                                Elements elementsByClass = parse.getElementsByClass("date-display-single");
+                                Element dateElement = elementsByClass.get(0);
+                                String dateText = dateElement.text();
+                                String[] split = dateText.split("-", 2);
+                                newDate = split[0];
+                                if (!newDate.equals(oldDate)) {
+                                    RssItem item = new RssItem(channel1.getItem().get(x).getTitle(), channel1.getItem().get(x).getLink(), channel1.getItem().get(x).getDescription());
+                                    item.setIsOnlyDate(true);
+                                    item.setPubDate(channel1.getItem().get(x).getPubDate());
+                                    oldDate = newDate;
+                                    channel1.getItem().add(x, item);
+                                }
+                            }
+                            final Channel channel = channel1;
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
+                                    mProgressBar.setVisibility(View.GONE);
+                                }
+                            });
+                        } catch (JSONException e1) {
+                            Log.e(TAG, e.toString());
                         }
                     }
-                    final Channel channel = channel1;
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
-                            mProgressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (JSONException e1) {
-                    Log.e(TAG, e.toString());
-                }
-            }
-        });
+                });
 
         mListView.setOnItemClickListener(this);
         return root;
