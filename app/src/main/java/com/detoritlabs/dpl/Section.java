@@ -7,5 +7,5 @@ public enum Section {
     NEWS,
     EVENTS,
     CATALOG,
-    CONTACT
+    MORE
 }
