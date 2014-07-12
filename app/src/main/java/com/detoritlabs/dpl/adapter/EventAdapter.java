@@ -1,9 +1,6 @@
 package com.detoritlabs.dpl.adapter;
 
 import android.content.Context;
-import android.text.Html;
-import android.text.Spanned;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +10,12 @@ import android.widget.TextView;
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.RssItem;
 
-import java.util.Date;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -43,16 +45,21 @@ public class EventAdapter extends ArrayAdapter<RssItem> {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.title.setText(item.getTitle());
-        Date date = parseDate(item.getDescription());
+        String[] dates = parseDate(item.getDescription());
+        holder.date.setText(dates[0]);
+        holder.time.setText(dates[1]);
 
         return convertView;
     }
 
-    private Date parseDate(String description) {
-        Spanned spanned = Html.fromHtml(description);
-        Log.i(EventAdapter.class.getName(), spanned.toString());
+    private String[] parseDate(String description) {
+        Document parse = Jsoup.parse(description);
+        Elements elementsByClass = parse.getElementsByClass("date-display-single");
+        Element dateElement = elementsByClass.get(0);
+        String dateText = dateElement.text();
+        String[] split = dateText.split("-", 2);
 
-        return new Date();
+        return split;
     }
 
     public static class ViewHolder {
