@@ -22,6 +22,10 @@ import com.detoritlabs.dpl.model.RssItem;
 import com.koushikdutta.async.future.FutureCallback;
 
 import org.json.JSONException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -60,29 +64,41 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_news_feed, container, false);
         ButterKnife.inject(this, root);
-        if(!NetworkUtil.isNetworkAvailable(getActivity())){
-            mProgressBar.setVisibility(View.GONE);
-            errorView.setVisibility(View.VISIBLE);
-        }else {
-            errorView.setVisibility(View.GONE);
-            NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/events/rss.xml", new FutureCallback<String>() {
-                @Override
-                public void onCompleted(Exception e, String s) {
-                    try {
-                        final Channel channel = NetworkUtil.getChannel(s);
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
-                                mProgressBar.setVisibility(View.GONE);
+        NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/events/rss.xml", new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String s) {
+                        try {
+                            Channel channel1 = NetworkUtil.getChannel(s);
+                            String oldDate = "";
+                            for (int x = 0; x < channel1.getItem().size(); x += 2) {
+                                String newDate;
+                                Document parse = Jsoup.parse(channel1.getItem().get(x).getDescription());
+                                Elements elementsByClass = parse.getElementsByClass("date-display-single");
+                                Element dateElement = elementsByClass.get(0);
+                                String dateText = dateElement.text();
+                                String[] split = dateText.split("-", 2);
+                                newDate = split[0];
+                                if (!newDate.equals(oldDate)) {
+                                    RssItem item = new RssItem(channel1.getItem().get(x).getTitle(), channel1.getItem().get(x).getLink(), channel1.getItem().get(x).getDescription());
+                                    item.setIsOnlyDate(true);
+                                    item.setPubDate(channel1.getItem().get(x).getPubDate());
+                                    oldDate = newDate;
+                                    channel1.getItem().add(x, item);
+                                }
                             }
-                        });
-                    } catch (JSONException e1) {
-                        Log.e(TAG, e.toString());
+                            final Channel channel = channel1;
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
+                                    mProgressBar.setVisibility(View.GONE);
+                                }
+                            });
+                        } catch (JSONException e1) {
+                            Log.e(TAG, e.toString());
+                        }
                     }
-                }
-            });
-        }
+                });
 
         mListView.setOnItemClickListener(this);
         return root;
