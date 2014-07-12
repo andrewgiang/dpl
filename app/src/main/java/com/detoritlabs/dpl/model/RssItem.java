@@ -1,11 +1,13 @@
 package com.detoritlabs.dpl.model;
 
-import java.util.Date;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by andrewgiang on 7/11/14.
  */
-public class RssItem {
+public class RssItem implements Parcelable{
 
     String title;
     String link;
@@ -16,6 +18,12 @@ public class RssItem {
         this.title = title;
         this.link = link;
         this.description = description;
+    }
+    RssItem(Parcel in) {
+        title= in.readString();
+        link = in.readString();
+        description = in.readString();
+        pubDate = in.readString();
     }
 
     public String getTitle() {
@@ -41,4 +49,29 @@ public class RssItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(link);
+        dest.writeString(description);
+        dest.writeString(pubDate);
+    }
+
+    public static final Parcelable.Creator<RssItem> CREATOR
+            = new Parcelable.Creator<RssItem>() {
+        public RssItem createFromParcel(Parcel in) {
+            return new RssItem(in);
+        }
+
+        public RssItem[] newArray(int size) {
+            return new RssItem[size];
+        }
+    };
 }
