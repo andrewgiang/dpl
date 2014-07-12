@@ -13,11 +13,18 @@ public class RssItem implements Parcelable{
     String link;
     String description;
     String pubDate;
+    boolean isOnlyDate = false;
 
     public RssItem(String title, String link, String description) {
         this.title = title;
         this.link = link;
         this.description = description;
+    }
+    public void setIsOnlyDate(Boolean date){
+        isOnlyDate = date;
+    }
+    public boolean getIsOnlyDate(){
+        return isOnlyDate;
     }
     RssItem(Parcel in) {
         title= in.readString();

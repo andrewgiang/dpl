@@ -19,16 +19,4 @@
         android:text="Introduction to Word"
         style="@style/Title" />
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/title"
-        android:paddingRight="8dp"
-        android:text="Time: 12pm - 12am"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/gray"
-        android:paddingBottom="16dp"/>
 </RelativeLayout>

@@ -7,8 +7,6 @@ import java.util.List;
  */
 public class Location {
 
-
-
     String name;
     String number;
     String address;
@@ -44,5 +42,10 @@ public class Location {
 
     public void setHours(List<Hour> hours) {
         this.hours = hours;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }
