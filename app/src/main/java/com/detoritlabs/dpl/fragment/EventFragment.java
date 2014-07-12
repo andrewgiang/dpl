@@ -4,6 +4,7 @@ package com.detoritlabs.dpl.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,8 +28,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.GregorianCalendar;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -112,7 +116,5 @@ public class EventFragment extends Fragment implements AdapterView.OnItemClickLi
         Intent intent = new Intent(getActivity(), RssDetailActivity.class);
         intent.putExtra(RssDetailActivity.RSS_ITEM, item);
         startActivity(intent);
-
-
     }
 }

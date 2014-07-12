@@ -16,7 +16,15 @@
         android:paddingBottom="16dp"
         android:paddingLeft="8dp"
         android:paddingTop="16dp"
-        android:text="Introduction to Word"
-        style="@style/Title" />
+        android:text="Saturday, July 12, 2014"
+        style="@style/EventTitle" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/gray"
+        android:layout_below="@id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
