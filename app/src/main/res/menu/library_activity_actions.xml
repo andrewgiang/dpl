@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LibraryActivity">
+    <item android:id="@+id/action_send"
+        android:title="SEND"
+        android:showAsAction="always" />
+</menu>

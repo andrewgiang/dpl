@@ -21,6 +21,10 @@
         <activity android:name=".activity.LocationActivity"
                 android:label="@string/location_label"
             android:parentActivityName=".activity.MainActivity"/>
+
+        <activity android:name=".activity.LibraryActivity"
+            android:label="@string/library_label"
+            android:parentActivityName=".activity.MainActivity"/>
     </application>
 
 </manifest>

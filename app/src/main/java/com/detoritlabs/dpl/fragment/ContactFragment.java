@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.detoritlabs.dpl.R;
+import com.detoritlabs.dpl.activity.LibraryActivity;
 import com.detoritlabs.dpl.activity.LocationActivity;
 
 import butterknife.ButterKnife;
@@ -44,6 +45,12 @@ public class ContactFragment extends Fragment {
     @OnClick(R.id.locationButton)
     public void onLibraryButtonClick(){
         Intent intent = new Intent(getActivity(), LocationActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.librarianButton)
+    public void onLibrarianButtonClick(){
+        Intent intent = new Intent(getActivity(), LibraryActivity.class);
         startActivity(intent);
     }
 
