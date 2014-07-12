@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         style="@style/Title"/>
 
-    <TextView
+    <com.laurencedawson.activetextview.ActiveTextView
         android:id="@+id/desc"
         android:layout_below="@id/title"
         android:layout_width="match_parent"

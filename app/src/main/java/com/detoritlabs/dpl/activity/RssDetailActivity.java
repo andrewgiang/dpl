@@ -1,14 +1,18 @@
 package com.detoritlabs.dpl.activity;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.RssItem;
+import com.laurencedawson.activetextview.ActiveTextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -21,7 +25,7 @@ public class RssDetailActivity extends Activity {
     @InjectView(R.id.title)
     TextView mTitle;
     @InjectView(R.id.desc)
-    TextView mDescription;
+    ActiveTextView mDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,12 @@ public class RssDetailActivity extends Activity {
         if(getIntent() != null){
             mEventItem = getIntent().getParcelableExtra(RSS_ITEM);
             mTitle.setText(mEventItem.getTitle());
-            mDescription.setText(Html.fromHtml(mEventItem.getDescription()));
+            mDescription.setText(Html.fromHtml(mEventItem.getDescription(), new Html.ImageGetter() {
+                @Override
+                public Drawable getDrawable(String s) {
+                    return getResources().getDrawable(android.R.drawable.screen_background_dark_transparent);
+                }
+            }, null));
         }
     }
 
