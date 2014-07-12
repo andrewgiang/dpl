@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.detoritlabs.dpl.fragment.DPLCheckoutFragment;
+
+import butterknife.InjectView;
+
 
 public class MainActivity extends Activity {
 
@@ -12,6 +16,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, DPLCheckoutFragment.newInstance()).
+                commit();
+
     }
 
 
