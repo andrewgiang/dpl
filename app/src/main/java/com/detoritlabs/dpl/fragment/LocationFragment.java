@@ -2,13 +2,19 @@ package com.detoritlabs.dpl.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.detoritlabs.dpl.NetworkUtil;
 import com.detoritlabs.dpl.R;
+import com.detoritlabs.dpl.activity.MainActivity;
 import com.detoritlabs.dpl.adapter.LocationAdapter;
 import com.detoritlabs.dpl.model.Location;
 import com.google.gson.reflect.TypeToken;
@@ -26,10 +32,12 @@ import butterknife.InjectView;
 /**
  * Created by andrewgiang on 7/12/14.
  */
-public class LocationFragment extends Fragment {
+public class LocationFragment extends Fragment implements TextWatcher {
 
     @InjectView(R.id.list)
     ListView listView;
+    @InjectView(R.id.input_search)
+    EditText searchEditText;
 
 
     @Override
@@ -44,9 +52,29 @@ public class LocationFragment extends Fragment {
             List<Location> locations = NetworkUtil.getGsonInstance().fromJson(reader, listType);
             listView.setAdapter(new LocationAdapter(getActivity(), locations));
 
+            searchEditText.addTextChangedListener(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return root;
     }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        LocationAdapter adapter = (LocationAdapter) listView.getAdapter();
+        adapter.getFilter().filter(charSequence);
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+
 }
