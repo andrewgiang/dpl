@@ -2,6 +2,7 @@ package com.detoritlabs.dpl.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,8 @@ public class EventDetailActivity extends Activity {
 
     @InjectView(R.id.title)
     TextView mTitle;
+    @InjectView(R.id.desc)
+    TextView mDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class EventDetailActivity extends Activity {
         if(getIntent() != null){
             mEventItem = getIntent().getParcelableExtra(RSS_ITEM);
             mTitle.setText(mEventItem.getTitle());
+            mDescription.setText(Html.fromHtml(mEventItem.getDescription()));
         }
     }
 
