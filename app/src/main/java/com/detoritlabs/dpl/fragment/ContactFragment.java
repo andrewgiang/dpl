@@ -31,7 +31,7 @@ public class ContactFragment extends Fragment {
     static final String YOUTUBE_WEB_URI = "https://www.youtube.com/user/detroitpubliclibrary";
     static final String ONLINE_BOOK_URI = "http://www.detroit.lib.mi.us/specialservice/overdrive-ebooks-and-audiobooks";
     static final String PHONE_NUMBER = "(313) 390-3939";
-    static final String DETROIT_READS = "http://www.detroit.lib.mi.us/specialservice/detroit-reads";
+    static final String DETROIT_READS = "http://www.detroitpubliclibrary.org/detroit-reads";
     static final String LIBRARY_ON_WHEELS = "http://www.detroit.lib.mi.us/specialservice/library-wheels-low";
     static final String HYPE_TEEN_CENTER = "http://www.detroit.lib.mi.us/specialservice/hype-teen-center";
     static final String CAREER_ASSISTANCE = "http://www.detroit.lib.mi.us/specialservice/career-and-employment-assistance";
