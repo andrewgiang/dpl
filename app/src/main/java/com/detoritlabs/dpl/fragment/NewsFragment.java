@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.detoritlabs.dpl.activity.RssDetailActivity;
 import com.detoritlabs.dpl.adapter.NewsAdapter;
@@ -31,6 +32,8 @@ public class NewsFragment extends Fragment implements AdapterView.OnItemClickLis
     ListView mListView;
     @InjectView(R.id.progress)
     ProgressBar mProgressBar;
+    @InjectView(R.id.internet_connection_error)
+    RelativeLayout errorView;
     public static NewsFragment newInstance() {
         NewsFragment fragment = new NewsFragment();
         Bundle args = new Bundle();
@@ -48,25 +51,31 @@ public class NewsFragment extends Fragment implements AdapterView.OnItemClickLis
         View root = inflater.inflate(R.layout.fragment_news_feed, container, false);
         ButterKnife.inject(this, root);
         mListView.setOnItemClickListener(this);
-        NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/news/rss.xml", new FutureCallback<String>() {
-            @Override
-            public void onCompleted(Exception e, String s) {
-                if (e == null) {
-                    try {
-                        final Channel channel = NetworkUtil.getChannel(s);
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mListView.setAdapter(new NewsAdapter(getActivity(), channel.getItem()));
-                                mProgressBar.setVisibility(View.GONE);
-                            }
-                        });
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
+        if(!NetworkUtil.isNetworkAvailable(getActivity())){
+            mProgressBar.setVisibility(View.GONE);
+            errorView.setVisibility(View.VISIBLE);
+        }else {
+            errorView.setVisibility(View.GONE);
+            NetworkUtil.fetchRss(getActivity(), "http://www.detroit.lib.mi.us/news/rss.xml", new FutureCallback<String>() {
+                @Override
+                public void onCompleted(Exception e, String s) {
+                    if (e == null) {
+                        try {
+                            final Channel channel = NetworkUtil.getChannel(s);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mListView.setAdapter(new NewsAdapter(getActivity(), channel.getItem()));
+                                    mProgressBar.setVisibility(View.GONE);
+                                }
+                            });
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
         return root;
     }
 
