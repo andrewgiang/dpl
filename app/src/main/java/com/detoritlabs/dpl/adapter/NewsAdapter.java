@@ -1,4 +1,4 @@
-package com.detoritlabs.dpl;
+package com.detoritlabs.dpl.adapter;
 
 import android.content.Context;
 import android.text.Html;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.RssItem;
 
 import java.util.List;
@@ -18,11 +19,11 @@ import butterknife.InjectView;
 /**
  * Created by andrewgiang on 7/11/14.
  */
-public class EventAdapter extends ArrayAdapter<RssItem> {
+public class NewsAdapter extends ArrayAdapter<RssItem> {
     private final LayoutInflater mLayoutInflater;
 
-    public EventAdapter(Context context, List<RssItem> objects) {
-        super(context, R.layout.row_event, objects);
+    public NewsAdapter(Context context, List<RssItem> objects) {
+        super(context, R.layout.row_news, objects);
         mLayoutInflater = LayoutInflater.from(getContext());
     }
 
@@ -32,7 +33,7 @@ public class EventAdapter extends ArrayAdapter<RssItem> {
 
         ViewHolder holder;
         if(convertView == null){
-            convertView = mLayoutInflater.inflate(R.layout.row_event, parent, false);
+            convertView = mLayoutInflater.inflate(R.layout.row_news, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }else {

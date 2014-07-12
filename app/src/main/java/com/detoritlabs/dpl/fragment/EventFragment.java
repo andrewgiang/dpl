@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.detoritlabs.dpl.EventAdapter;
+import com.detoritlabs.dpl.adapter.EventAdapter;
+import com.detoritlabs.dpl.adapter.NewsAdapter;
 import com.detoritlabs.dpl.NetworkUtil;
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.Channel;

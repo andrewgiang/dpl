@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.detoritlabs.dpl.EventAdapter;
+import com.detoritlabs.dpl.adapter.NewsAdapter;
 import com.detoritlabs.dpl.NetworkUtil;
 import com.detoritlabs.dpl.R;
 import com.detoritlabs.dpl.model.Channel;
@@ -50,7 +50,7 @@ public class NewsFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                mListView.setAdapter(new EventAdapter(getActivity(), channel.getItem()));
+                                mListView.setAdapter(new NewsAdapter(getActivity(), channel.getItem()));
 
                             }
                         });
